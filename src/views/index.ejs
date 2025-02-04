@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>TecnoPlanet</title>
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="header" style="overflow: hidden;">
+            <h1>TecnoPlanet</h1>
+            <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#">Articles</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+        
+        <div role="content" class="ui-content">
+            <form action="/api/electronica/insert" method="POST">
+                <label for="electronicaID"><h4>Matricula:</h4></label>
+                <input type="number" name="electronica_id" id="electronicaID">
+
+                <label for="txtElectronicaName"><h4>Nombre:</h4></label>
+                <input type="text" name="name" id="txtElectronicaName">
+
+                <label for="txtElectronicaLasname"><h4>Modelo:</h4></label>
+                <input type="text" name="lastname" id="txtElectronicaLasname">
+
+                <label for="txtElelectronicaGrade"><h4>Tipo:</h4></label>
+                <input type="text" name="grade" id="txtElelectronicaGrade">
+
+                <label for="txtElectronicaGroup"><h4>Grupo:</h4></label>
+                <input type="text" name="group" id="txtElectronicaGroup">
+
+                <label for="electronicaAverage"><h4>Costo:</h4></label>
+                <input type="number" name="average" id="electronicaAverage">
+
+                <button class="ui-btn ui-btn-inline">Guardar</button>
+            </form>
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="electronica" data-insert="true">
+                <%student.forEach((student)=>{%>
+                    <div data-role="collapsible" data-content-theme="false">
+                        <h2><%=electronica.name%></h2>
+                        <p>Matricula: <%=electronica.electronica_id%></p>
+                        <p>Nombre: <%=electronica.name%></p>
+                        <p>Apellido: <%=electronica.lastname%></p>
+                        <p>Grado: <%=electronica.grade%></p>
+                        <p>Grupo: <%=electronica.group%></p>
+                        <p>Promedio: <%=electronica.average%></p>
+                        <a href="/api/electronica/getOne/<%=electronica.electronica_id%>" class="ui-btn ui-mini">Editar</a>
+                        <a href="/api/electronica/deleteOne/<%=electronica.electronica_id%>" class="ui-btn ui-mini">Borrar</a>
+                    </div>
+                <% }) %>
+            </ul>
+        </div>
+
+        <div data-role="footer" style="overflow: hidden;">
+            <h4 style="text-align: center;">Social Networks</h4>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-icon="user"></a></li>
+                    <li><a href="#" data-icon="heart"></a></li>
+                    <li><a href="#" data-icon="mail"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
