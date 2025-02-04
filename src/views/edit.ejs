@@ -13,42 +13,32 @@
 <body>
     <div data-role="page">
         <div data-role="header" style="overflow: hidden;">
-            <h1>School Control</h1>
+            <h1>TecnoPlanet</h1>
             <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#">Electronica</a></li>
+                    <li><a href="#">Articles</a></li>
                    
                 </ul>
             </div>
         </div>
-        
-        <div role="content" class="ui-content">
-            <form action="/api/electronica/updateOne/<%=electronica.electronica_id%>" method="POST">
-                <label for="electronicaID"><h4>Matricula:</h4></label>
-               
-                <input type="number" name="stundent_id" id="electronicaID" value="<%=electronica.electronica_id%>">
-
-                <label for="txtElectronicaName"><h4>Nombre:</h4></label>
-                <input type="text" name="name" id="txtElectronicaName">
-
-                <label for="txtElectronicaLasname"><h4>Modelo:</h4></label>
-                <input type="text" name="lastname" id="txtElectronicaLasname">
-
-                <label for="txtElelectronicaGrade"><h4>Tipo:</h4></label>
-                <input type="text" name="grade" id="txtElelectronicaGrade">
-
-                <label for="txtElectronicaGroup"><h4>Grupo:</h4></label>
-                <input type="text" name="group" id="txtElectronicaGroup">
-
-                <label for="electronicaAverage"><h4>Costo:</h4></label>
-                <input type="number" name="average" id="electronicaAverage">
-
-                <button class="ui-btn ui-btn-inline">Actualizar</button>
+        <div data-role="content" class="ui-content" >
+            <form action="/api/electronica/updateOne/<%= electronica.electronica_Id %>" method="POST">
+                <label for="txtElectronicaID">Identificador:</label>
+                <input type="number" name="electronica_Id" id="txtElectronicaId" value="<%= electronica.electronica_Id %>">
+                <label for="txtNombre">Nombre:</label>
+                <input type="text" name="nombre" id="txtNombre" value="<%= electronica.nombre %>">
+                <label for="txtCategoria">Categoria:</label>
+                <input type="text" name="categoria" id="txtCategoria" value="<%= electronica.categoria %>">
+                <label for="txtPrecio">Precio:</label>
+                <input type="number" name="precio" id="txtPrecio" value="<%= electronica.precio %>">
+                <label for="txtModelo">Modelo:</label>
+                <input type="text" name="modelo" id="txtModelo" value="<%= electronica.modelo %>">
+                <label for="txtStock">Stock:</label>
+                <input type="text" name="stock" id="txtStock" value="<%= electronica.stock %>">
+                <button class="ui-btn ui-btn-center">Actualizar</button>
             </form>
-        </div>
-
-        <div data-role="footer" style="overflow: hidden;">
+            <div data-role="footer" style="overflow: hidden;">
             <h4 style="text-align: center;">Social Networks</h4>
             <div data-role="navbar">
                 <ul>

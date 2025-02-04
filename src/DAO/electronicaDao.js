@@ -1,23 +1,23 @@
-const electronicaDao ={};
-import electronica from "../models/Electronica.js";
+import Electronica from "../models/Electronica.js";
+const electronicaDAO ={};
 
-electronicaDao.getAll = async () =>{
-    return await electronica.find();
+electronicaDAO.getAll = async () =>{
+    return await Electronica.find();
 };
-electronicaDao.getOne = async (electronica_id)=>{
-    return await electronica.finOne({electronica_id:electronica_id});
-};
-
-electronicaDao.insert=async (electronica_id)=>{
-    return await electronica.create(electronica);
-};
-electronicaDao.updateOne = async (electronica_id)=>{
-    return await electronica.findOnerAndUpdate({electronica_id:electronica_id},electronica);
-};
-electronicaDao.deleteOne = async (electronica_id)=>{
-    return await electronica.findOnerAndUpdate({electronica_id:electronica_id});
+electronicaDAO.getOne = async (electronica_Id)=>{
+    return await Electronica.findOne({electronica_Id:electronica_Id});
 };
 
+electronicaDAO.insert=async (electronica)=>{
+    return await Electronica.create(electronica);
+};
+electronicaDAO.updateOne = async (electronica,electronica_Id)=>{
+    return await Electronica.findOneAndUpdate({electronica_Id:electronica_Id},electronica);
+};
+electronicaDAO.deleteOne = async (electronica_Id)=>{
+    return await Electronica.findOneAndDelete({electronica_Id:electronica_Id});
+};
 
 
-export default electronicaDao;
+
+export default electronicaDAO;

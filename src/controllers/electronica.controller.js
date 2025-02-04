@@ -1,17 +1,10 @@
-
-import  electronicaDao from " ../DAO/electronicaDao.js";
-import { response } from "express";
-
+import electronicaDAO from "../DAO/electronicaDao.js";
 const electronicaController = {};
 
-
-
 electronicaController.getAll = (req, res)=>{
-    electronicaDao
-    .getAll()
-    .then((eletronica)=>{
-    console.log(eletronica);
-       
+    electronicaDAO.getAll()
+    .then((electronica)=>{
+    console.log(electronica);
     res.render('../src/views/index.ejs',{electronica});
 })
 .catch((error)=> {
@@ -19,59 +12,59 @@ electronicaController.getAll = (req, res)=>{
         data:{
             message:error,
         },
-    });
+    })
 });
 };
 
 electronicaController.getOne = (req , res)=>{
-    electronicaDao
-    .getOne(req,params.electronica_id)
+    electronicaDAO.getOne(req.params.electronica_Id)
     .then((electronica)=>{
-        res.render('../src/views/edit.js',{electronica})
+        res.render('../src/views/edit.ejs',{electronica})
     });
 };
 electronicaController.insert= (req,res)=>{
-    electronicaDao
-    insert(req.body)
-    .then((electronica)=>{
+    electronicaDAO.insert(req.body)
+    .then(()=>{
         res.redirect('/api/electronica/getAll');
     })
-
-};
-
-electronicaController.updateOne = (req , res)=>{
-    electronicaDao
-    .updateOne(req.params.electronica_id,req.body)
-    .then((eletronica)=>{
-        res.redirect('api/electronica/getAll');
-    })
-    .catch((error) => {
+    .catch((error)=>{
         res.json({
-            data:{message:error}
-        });
-    });
+            data:{
+                message:error
+            }
+        })
+    })
+
 };
 
-electronicaController.deleteOne = (res,req)=>{
-    electronicaDao
-    .deleteOne(req.params.electronica_id)
-    .then((response)=>{
-        req.redirect('/api/electronica/getAll')
-    })
-    .catch((erro)=>{
-        data:{
-            message: error;
-        }
-    });
-}
-
-electronicaController.insert = (res,req)=>{
-    electronicaDao
-    .insert(req.body)
-    .then((electronica)=>{
+electronicaController.updateOne=(req,res)=>{
+   electronicaDAO.updateOne(req.body, req.params.electronica_Id)
+    .then(()=>{
         res.redirect('/api/electronica/getAll')
     })
+    .catch((error)=>{
+        res.json({
+            data:{
+                message:error
+            }
+        })
+    })
+
 }
 
+electronicaController.deleteOne = (req,res)=>{
+    electronicaDAO.deleteOne(req.params.electronica_Id)
+    .then(()=>{
+        res.redirect('/api/electronica/getAll')
+    })
+    .catch((error)=>{
+        res.json({
+            data:{
+                error:error
+            }
+        })
+        
+    });
+}
 
 export default electronicaController;

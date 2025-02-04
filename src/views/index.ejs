@@ -25,38 +25,37 @@
         
         <div role="content" class="ui-content">
             <form action="/api/electronica/insert" method="POST">
-                <label for="electronicaID"><h4>Matricula:</h4></label>
-                <input type="number" name="electronica_id" id="electronicaID">
+                <label for="txtElectronicaID"><h4>Identificador:</h4></label>
+                <input type="number" name="electronica_Id" id="txtElectronicaID">
 
-                <label for="txtElectronicaName"><h4>Nombre:</h4></label>
-                <input type="text" name="name" id="txtElectronicaName">
+                <label for="txtElectronicaNombre"><h4>Nombre:</h4></label>
+                <input type="text" name="nombre" id="txtElectronicaNombre">
 
-                <label for="txtElectronicaLasname"><h4>Modelo:</h4></label>
-                <input type="text" name="lastname" id="txtElectronicaLasname">
+                <label for="txtCategoria"><h4>Categoria:</h4></label>
+                <input type="text" name="categoria" id="txtCategoria">
 
-                <label for="txtElelectronicaGrade"><h4>Tipo:</h4></label>
-                <input type="text" name="grade" id="txtElelectronicaGrade">
+                <label for="txtPrecio"><h4>Precio:</h4></label>
+                <input type="number" name="precio" id="txtPrecio">
 
-                <label for="txtElectronicaGroup"><h4>Grupo:</h4></label>
-                <input type="text" name="group" id="txtElectronicaGroup">
+                <label for="txtModelo"><h4>Modelo:</h4></label>
+                <input type="text" name="modelo" id="txtModelo">
 
-                <label for="electronicaAverage"><h4>Costo:</h4></label>
-                <input type="number" name="average" id="electronicaAverage">
-
+                <label for="txtStock"><h4>Stock:</h4></label>
+                <input type="number" name="stock" id="txtStock">
                 <button class="ui-btn ui-btn-inline">Guardar</button>
             </form>
             <ul data-role="listview" data-filter="true" data-filter-placeholder="electronica" data-insert="true">
-                <%student.forEach((student)=>{%>
+                <% electronica.forEach((electronica)=>{%>
                     <div data-role="collapsible" data-content-theme="false">
-                        <h2><%=electronica.name%></h2>
-                        <p>Matricula: <%=electronica.electronica_id%></p>
-                        <p>Nombre: <%=electronica.name%></p>
-                        <p>Apellido: <%=electronica.lastname%></p>
-                        <p>Grado: <%=electronica.grade%></p>
-                        <p>Grupo: <%=electronica.group%></p>
-                        <p>Promedio: <%=electronica.average%></p>
-                        <a href="/api/electronica/getOne/<%=electronica.electronica_id%>" class="ui-btn ui-mini">Editar</a>
-                        <a href="/api/electronica/deleteOne/<%=electronica.electronica_id%>" class="ui-btn ui-mini">Borrar</a>
+                        <h2><%= electronica.nombre %></h2>
+                        <p>Identificador: <%= electronica.electronica_Id %></p>
+                        <p>Nombre: <%= electronica.nombre %></p>
+                        <p>Categoria: <%= electronica.categoria %></p>
+                        <p>Precio: <%= electronica.precio %></p>
+                        <p>Modelo: <%= electronica.modelo %></p>
+                        <p>Stock: <%= electronica.stock %></p>
+                        <a href="/api/electronica/getOne/<%= electronica.electronica_Id %>" class="ui-btn ui-mini">Editar</a>
+                        <a href="/api/electronica/deleteOne/<%= electronica.electronica_Id %>" class="ui-btn ui-mini">Borrar</a>
                     </div>
                 <% }) %>
             </ul>
